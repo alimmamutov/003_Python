@@ -13,6 +13,8 @@
                 - base.html
                 - index.html
             - new_folder:
+                - base.html
+                - index.html
     - authapp:
         - __init__.py
         - models.py
