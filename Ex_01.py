@@ -1,17 +1,17 @@
 import re
-EMAIL_LIST = ['someone@geekbrains.ru', 'someone@geekbrainsru', 'mamutov.creation@yandex.ru',
-              'mamutov-creation@yandex.ru']
-RE_EMAIL = re.compile(r'(?P<Username>[A-Za-z!._-]+)@(?P<Domain>[A-Za-z]+\.\w{2,})')
 
 
 def email_parse(email_address):
-    if not RE_EMAIL.match(email_address):
-        raise ValueError(f'wrong email:{email_address}')
-    print(RE_EMAIL.match(email_address).groupdict())
+    result = re.fullmatch(r'(?P<Username>[A-Za-z!._-]+)@(?P<Domain>[A-Za-z]+\.\w{2,})', email_address)
+    if result is None:
+        raise ValueError("Невалидный email!")
+    return result.groupdict()
 
 
-for element in EMAIL_LIST:
-    try:
-        email_parse(element)
-    except ValueError as err:
-        print(err)
+if __name__ == '__main__':
+    email_list = ["someone@geekbrains.ru", 'someone@geekbrainsru', 'mamutov.creation@yandex.ru']
+    for email in email_list:
+        try:
+            print(email_parse(email))
+        except ValueError:
+            print()
