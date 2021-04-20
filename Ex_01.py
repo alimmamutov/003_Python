@@ -17,7 +17,6 @@ class TrafficLight:
             print(self.__color)
             TrafficLight.show_timer(3)
             self.__color = "red"
-        return 1
 
     @staticmethod
     def show_timer(sec: int):
@@ -29,7 +28,6 @@ class TrafficLight:
                 end = ''
             print(' ', ind + 1, end=end)
         time.sleep(1)
-
 
 
 traffic_light = TrafficLight()
